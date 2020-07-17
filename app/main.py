@@ -1,8 +1,9 @@
 # from dataclasses import dataclass
+import importlib
 from enum import Enum
 from fastapi import FastAPI
 
-from . import query_parameters, request_models
+import app as app_pkg
 
 
 app = FastAPI()
@@ -53,6 +54,7 @@ class ModelName(str, Enum):
     lenet = "lenet"
 
 
+# Enum can be used as path parameter
 @app.get("/model/{model_name}")
 async def get_model(model_name: ModelName):
     return {"model_name": model_name.value, "description": f"{model_name} is an ML model"}
@@ -67,5 +69,8 @@ async def read_file(file_path: str):
 
 # All modules that have router instance
 # needs to include their routers in this app instance
-app.include_router(query_parameters.router)
-app.include_router(request_models.request_model_router)
+
+for module in app_pkg.__all__:
+    if module not in ["main"]:
+        module_obj = importlib.import_module(f"{app_pkg.__name__}.{module}")
+        app.include_router(getattr(module_obj, "router"))

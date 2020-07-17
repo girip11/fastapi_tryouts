@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
-
+# Reference: https://pydantic-docs.helpmanual.io/usage/models/
 # Pydantic models inherit from basemodel
 
 

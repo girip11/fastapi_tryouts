@@ -47,6 +47,8 @@
     "python.autoComplete.showAdvancedMembers": true,
     "python.linting.banditEnabled": true,
     "python.linting.pylintEnabled": true,
+    // Reference: http://pylint.pycqa.org/en/latest/technical_reference/c_extensions.html
+    "python.linting.pylintArgs": ["--extension-pkg-whitelist", "pydantic"],
     "python.linting.mypyEnabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.enabled": true,

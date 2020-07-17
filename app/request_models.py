@@ -3,8 +3,10 @@ from pydantic import BaseModel
 from fastapi import APIRouter
 
 # To represent request body, we can use pydantic models
+# All pydantic models in the request parameter will be
+# obtained from the request body.
 
-request_model_router = APIRouter()
+router = APIRouter()
 
 
 class Item(BaseModel):
@@ -14,12 +16,14 @@ class Item(BaseModel):
     tax: Optional[float] = None
 
 
-@request_model_router.post("/items/")
+# JSON is automatically converted to Item model
+# Each JSON field is also validated
+@router.post("/items/")
 async def create_item(item: Item):
     return item
 
 
-@request_model_router.put("/items/{item_id}")
+@router.put("/items/{item_id}")
 async def update_item(item_id: int, item: Item):
     return {"item_id": item_id, **item.dict()}
 
