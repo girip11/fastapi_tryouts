@@ -1,0 +1,59 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.renderWhitespace": "all",
+
+    "[markdown]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.markdownlint": true
+      },
+      "editor.wordWrap": "wordWrapColumn",
+      "editor.wrappingIndent": "none"
+    },
+    "[python]": {
+      "editor.wordWrapColumn": 100
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "editor.detectIndentation": false,
+    "editor.fontSize": 16,
+
+    "terminal.integrated.env.linux": {
+      "VSCODE_INTEGRATED_TERMINAL": "true",
+      "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}"
+    },
+    "terminal.integrated.rendererType": "dom",
+    "git.autorefresh": true,
+    "markdownlint.ignore": ["**/*.md.html"],
+    "files.insertFinalNewline": true,
+    "files.associations": {
+      "*.md.html": "markdown"
+    },
+    "shellcheck.enable": true,
+    "shellcheck.useWorkspaceRootAsCwd": true,
+    "shellcheck.run": "onSave",
+    "shellformat.flag": "-i 2 -ci -sr -bn",
+    "python.pythonPath": "/home/girish/.local/share/virtualenvs/fastapi_tryout-7rz3ywnN/bin/python",
+    "python.venvPath": "/home/girish/.local/share/virtualenvs",
+    "python.pipenvPath": "/home/girish/.pyenv/shims/pipenv",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["-l", "100"],
+    "python.autoComplete.showAdvancedMembers": true,
+    "python.linting.banditEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestPath": "pytest",
+    "python.testing.pytestArgs": ["test"]
+  }
+}
