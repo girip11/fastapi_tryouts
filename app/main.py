@@ -1,8 +1,10 @@
 # from dataclasses import dataclass
 import importlib
 from enum import Enum
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 
+from app.handling_errors import CustomException
 import app as app_pkg
 
 
@@ -74,3 +76,15 @@ for module in app_pkg.__all__:
     if module not in ["main"]:
         module_obj = importlib.import_module(f"{app_pkg.__name__}.{module}")
         app.include_router(getattr(module_obj, "router"))
+
+# adding custom exception handler
+@app.exception_handler(CustomException)
+async def custom_exception_handler(request: Request, exc: CustomException):
+    return JSONResponse(
+        status_code=418,
+        content={
+            "message": "Issue with fetching item",
+            "args": exc.args,
+            "request": str(request.url),
+        },
+    )
