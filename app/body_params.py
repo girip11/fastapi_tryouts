@@ -1,11 +1,12 @@
 from typing import Optional
-from fastapi import APIRouter, Body, Query, Path
+
+from fastapi import APIRouter, Body, Path, Query
 from pydantic import BaseModel
 
 router = APIRouter()
 
 
-class Item(BaseModel):
+class BodyParamItem(BaseModel):
     name: str
     description: Optional[str] = None
     price: float
@@ -36,7 +37,7 @@ class User(BaseModel):
 async def body_params(
     *,
     item_id: int = Path(..., ge=1),
-    item: Item = Body(...),
+    item: BodyParamItem = Body(...),
     user: Optional[User] = Body(None),
     q: Optional[str] = Query(None)
 ):

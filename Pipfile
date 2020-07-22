@@ -9,8 +9,10 @@ black = "*"
 ipython = "*"
 mypy = "*"
 pydocstyle = "*"
-pylint = "*"
 pytest = "*"
+flake8 = "*"
+isort = "*"
+autoflake = "*"
 
 [packages]
 fastapi = "*"

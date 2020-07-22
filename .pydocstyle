@@ -1,0 +1,4 @@
+[pydocstyle]
+# http://www.pydocstyle.org/en/2.1.1/usage.html#cli-usage
+match = *.py
+ignore = D100,D103

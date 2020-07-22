@@ -46,9 +46,7 @@
     "python.formatting.blackArgs": ["-l", "100"],
     "python.autoComplete.showAdvancedMembers": true,
     "python.linting.banditEnabled": true,
-    "python.linting.pylintEnabled": true,
-    // Reference: http://pylint.pycqa.org/en/latest/technical_reference/c_extensions.html
-    "python.linting.pylintArgs": ["--extension-pkg-whitelist", "pydantic"],
+    "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.enabled": true,
@@ -56,6 +54,22 @@
 
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "pytest",
-    "python.testing.pytestArgs": ["test"]
+    "python.testing.pytestArgs": ["test"],
+    "emeraldwalk.runonsave": {
+      "commands": [
+        {
+          "match": "\\.py$",
+          // "cmd": "echo ${file}",
+          "cmd": "pipenv run isort '${file}'",
+          "isAsync": false
+        },
+        {
+          "match": "\\.py$",
+          // "cmd": "echo ${file}",
+          "cmd": "pipenv run autoflake -i --remove-all-unused-imports '${file}'",
+          "isAsync": false
+        }
+      ]
+    }
   }
 }

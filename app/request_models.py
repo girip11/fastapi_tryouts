@@ -9,7 +9,7 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-class Item(BaseModel):
+class RequestModelItem(BaseModel):
     name: str
     description: Optional[str] = None
     price: float
@@ -19,12 +19,12 @@ class Item(BaseModel):
 # JSON is automatically converted to Item model
 # Each JSON field is also validated
 @router.post("/items/")
-async def create_item(item: Item):
+async def create_item(item: RequestModelItem):
     return item
 
 
 @router.put("/items/{item_id}")
-async def update_item(item_id: int, item: Item):
+async def update_item(item_id: int, item: RequestModelItem):
     return {"item_id": item_id, **item.dict()}
 
 

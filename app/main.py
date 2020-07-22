@@ -59,7 +59,7 @@ class ModelName(str, Enum):
 # Enum can be used as path parameter
 @app.get("/model/{model_name}")
 async def get_model(model_name: ModelName):
-    return {"model_name": model_name.value, "description": f"{model_name} is an ML model"}
+    return {"model_name": model_name.value, "description": f"{model_name} is a ML model"}
 
 
 # path parameters can contain file paths as values
@@ -68,14 +68,6 @@ async def get_model(model_name: ModelName):
 async def read_file(file_path: str):
     return {"file_path": file_path, "content": "random content"}
 
-
-# All modules that have router instance
-# needs to include their routers in this app instance
-
-for module in app_pkg.__all__:
-    if module not in ["main"]:
-        module_obj = importlib.import_module(f"{app_pkg.__name__}.{module}")
-        app.include_router(getattr(module_obj, "router"))
 
 # adding custom exception handler
 @app.exception_handler(CustomException)
@@ -88,3 +80,17 @@ async def custom_exception_handler(request: Request, exc: CustomException):
             "request": str(request.url),
         },
     )
+
+
+# All modules that have router instance
+# needs to include their routers in this app instance
+
+for module in app_pkg.__all__:
+    if module not in ["main"]:
+        module_obj = importlib.import_module(f"{app_pkg.__name__}.{module}")
+        app.include_router(getattr(module_obj, "router"))
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app)

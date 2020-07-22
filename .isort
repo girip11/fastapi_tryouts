@@ -1,0 +1,5 @@
+[isort]
+profile = black
+line_length = 100
+# skip = .git, venv, versioneer.py, _version.py, conf.py
+# skip_glob = *.pyi

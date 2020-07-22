@@ -1,4 +1,4 @@
-from typing import List, Optional, Set, Dict
+from typing import Optional
 
 from fastapi import APIRouter, Body
 from pydantic import BaseModel, Field
@@ -14,7 +14,7 @@ router = APIRouter()
 # which will be passed as an extra attribute
 
 
-class Item(BaseModel):
+class SchemaExtrasItem(BaseModel):
     name: str = Field(..., example="Foo")
     description: Optional[str] = Field(None, example="A very nice Item")
     price: float = Field(..., example=35.4)
@@ -34,8 +34,8 @@ class Item(BaseModel):
 @router.put("/schema_extras/{item_id}")
 async def schema_extras(
     item_id: int,
-    item: Item = Body(
-        ..., example={"name": "Foo", "description": "A very nice Item", "price": 35.4, "tax": 3.2,},
+    item: SchemaExtrasItem = Body(
+        ..., example={"name": "Foo", "description": "A very nice Item", "price": 35.4, "tax": 3.2},
     ),
 ):
     return {"item_id": item_id, "item": item}

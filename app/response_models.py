@@ -1,7 +1,7 @@
-from typing import List, Optional, Set, Dict
+from typing import Optional
 
-from fastapi import APIRouter, Body, status
-from pydantic import BaseModel, Field
+from fastapi import APIRouter, status
+from pydantic import BaseModel
 
 router = APIRouter()
 

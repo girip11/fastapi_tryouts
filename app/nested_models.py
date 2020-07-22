@@ -13,7 +13,7 @@ class Image(BaseModel):
     name: str
 
 
-class Item(BaseModel):
+class NestedModelItem(BaseModel):
     name: str
     description: Optional[str] = None
     price: float
@@ -29,7 +29,7 @@ class Offer(BaseModel):
     description: Optional[str] = None
     price: float
     # Nested models support
-    items: List[Item]
+    items: List[NestedModelItem]
 
 
 # Body parameters can be JSON array
