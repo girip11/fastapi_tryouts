@@ -1,12 +1,12 @@
 # from dataclasses import dataclass
 import importlib
 from enum import Enum
+
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from app.handling_errors import CustomException
 import app as app_pkg
-
+from app.handling_errors import CustomException
 
 app = FastAPI()
 
@@ -93,4 +93,4 @@ for module in app_pkg.__all__:
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app)
+    uvicorn.run("main:app", reload=True)
