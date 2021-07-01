@@ -39,8 +39,8 @@
     "shellcheck.useWorkspaceRootAsCwd": true,
     "shellcheck.run": "onSave",
     "shellformat.flag": "-i 2 -ci -sr -bn",
-    "python.pythonPath": "/home/girish/.local/share/virtualenvs/fastapi_tryout-7rz3ywnN/bin/python",
-    "python.venvPath": "/home/girish/.local/share/virtualenvs",
+    "python.languageServer": "Pylance",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "python.pipenvPath": "/home/girish/.pyenv/shims/pipenv",
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": ["-l", "100"],
@@ -54,7 +54,7 @@
 
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "pytest",
-    "python.testing.pytestArgs": ["test"],
+    "python.testing.pytestArgs": ["tests"],
     "emeraldwalk.runonsave": {
       "commands": [
         {
